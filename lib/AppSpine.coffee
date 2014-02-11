@@ -20,6 +20,8 @@ module.exports = class AppSpine extends EventEmitter2
 
   isDev: -> @getEnv() is 'development'
 
+  configure: (env, fn) -> fn() if @getEnv() is env
+
   getEnv: ->
     process.env.NODE_ENV or 'development'
 
