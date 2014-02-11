@@ -1,2 +1,2 @@
 require('coffee-script/register');
-require('./lib/AppSpine.coffee');
+module.exports = require('./lib/AppSpine.coffee');
