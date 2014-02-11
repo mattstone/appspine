@@ -1,0 +1,32 @@
+{
+  "name": "appspine",
+  "version": "0.0.1",
+  "description": "node.js application namespace base class",
+  "keywords": [
+    "application",
+    "namespace"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/minibikini/appspine.git"
+  },
+  "author": {
+    "name": "Egor Kislitsyn",
+    "email": "egor@kislitsyn.com",
+    "url": "http://kislitsyn.com/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/minibikini/appspine/issues"
+  },
+  "homepage": "https://github.com/minibikini/appspine",
+  "dependencies": {
+    "coffee-script": "~1.7.1",
+    "eventemitter2": "~0.4.13",
+    "tracer": "~0.6.2"
+  }
+}
