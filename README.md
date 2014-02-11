@@ -4,7 +4,7 @@ AppSpine
 
 Usage:
 ```coffee
-AppSpine = requrie 'appspine'
+AppSpine = require 'appspine'
 config = require './config'
 
 app = new AppSpine config
