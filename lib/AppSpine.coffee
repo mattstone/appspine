@@ -18,12 +18,32 @@ module.exports = class AppSpine extends EventEmitter2
     super @config.emitter
     @setupLogger()
 
-  isDev: -> @getEnv() is 'development'
-
-  configure: (env, fn) -> fn() if @getEnv() is env
+  getEnvironment: ->
+    @config.env or process.env.NODE_ENV or 'development'
 
   getEnv: ->
-    process.env.NODE_ENV or 'development'
+    @getEnvironment()
+
+  isDevelopment: ->
+    @getEnvironment() is 'development'
+
+  isDev: ->
+    @isDevelopment()
+
+  isTesting: ->
+    @getEnvironment() is 'testing'
+
+  isStaging: ->
+    @getEnvironment() is 'staging'
+
+  isProduction: ->
+    @getEnvironment() is 'production'
+
+  isProd: ->
+    @isProduction()
+
+  configure: (env, fn) ->
+    fn() if @getEnvironment() is env
 
   require: (path) ->
     require(path)(@)
@@ -33,8 +53,6 @@ module.exports = class AppSpine extends EventEmitter2
     @config.logger.format ?= "[{{title}}] {{timestamp}} ({{file}}:{{line}}): {{message}}"
     @config.logger.filters ?= loggerColorFilters
     @config.logger.dateformat ?= "HH:MM:ss"
-
-    unless @config.logger.level?
-      @config.logger.level = if @isDev() then 'log' else 'warn'
+    @config.logger.level ?= if @isDev() then 'log' else 'warn'
 
     @logger = tracer.colorConsole @config.logger
