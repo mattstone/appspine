@@ -74,7 +74,9 @@ module.exports = class AppSpine extends EventEmitter2
       (done) =>
         initStart = Date.now()
         fn (err) =>
-          return done(err) if err?
+          if err?
+            @logger.error "#{name} Error", err if err?
+            return done(err)
           @logger.info "#{name} is ready (#{Date.now() - initStart} ms)"
           done()
 
@@ -93,7 +95,6 @@ module.exports = class AppSpine extends EventEmitter2
 
 
     async.auto tasks, (err) =>
-      return @logger.error err if err?
       @logger.info "Application is ready (#{Date.now() - start} ms)"
       @emit 'ready'
       cb()
