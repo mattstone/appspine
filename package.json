@@ -1,6 +1,6 @@
 {
   "name": "appspine",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "node.js application namespace base class",
   "keywords": [
     "application",
