@@ -14,6 +14,8 @@ module.exports = class AppSpine extends EventEmitter2
     @setupLogger()
     @init() if @config.initializers?
 
+    process.title = @config.appName if @config.appName?
+
   getEnvironment: ->
     @config.env or process.env.NODE_ENV or 'development'
 
