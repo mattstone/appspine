@@ -15,6 +15,8 @@ module.exports = class AppSpine extends EventEmitter2
     @init() if @config.initializers?
 
     process.title = @config.appName if @config.appName?
+    process.on 'uncaughtException',  (err) =>
+      @logger.error 'uncaughtException', err
 
   getEnvironment: ->
     @config.env or process.env.NODE_ENV or 'development'
