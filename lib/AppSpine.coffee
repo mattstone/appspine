@@ -83,7 +83,7 @@ module.exports = class AppSpine extends EventEmitter2
           if err?
             @logger.error "#{name} Error", err if err?
             return done(err)
-          @logger.info "#{name} is ready (#{Date.now() - initStart} ms)"
+          @logger.trace "#{name} is ready (#{Date.now() - initStart} ms)"
           done()
 
     tasks = {}
@@ -101,7 +101,7 @@ module.exports = class AppSpine extends EventEmitter2
 
 
     async.auto tasks, (err) =>
-      @logger.info "Application is ready (#{Date.now() - start} ms)"
+      @logger.info "Started (#{Date.now() - start} ms)"
       @emit 'ready'
       cb()
 
